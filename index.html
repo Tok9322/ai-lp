@@ -4,128 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arc Creation AIコミュニティ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2ecc71;
-            --discord-color: #27ae60;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
+            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --primary-color-hover: #2575fc;
+            --text-color: #e0e0e0;
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
             --white-color: #ffffff;
+            --border-color: #2c2c2c;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 0;
             color: var(--text-color);
-            background-color: var(--white-color);
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 960px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
         }
 
         /* Header / Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--discord-color));
+            background: var(--bg-color);
             color: var(--white-color);
-            padding: 80px 20px;
+            padding: 120px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(106, 17, 203, 0.15), transparent 70%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3em;
-            margin: 0 0 10px 0;
+            font-size: 3.5em;
+            margin: 0 0 20px 0;
             font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #a0a0a0;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--white-color);
-            color: var(--primary-color);
-            padding: 15px 30px;
+            background: var(--primary-gradient);
+            color: var(--white-color);
+            padding: 18px 40px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             border-radius: 50px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             font-size: 1.1em;
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4);
         }
 
         /* Section Styling */
         section {
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
-
-        section:nth-child(odd) {
-            background-color: var(--bg-color);
+        
+        section:last-of-type {
+            border-bottom: none;
         }
 
         h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: var(--primary-color);
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+        
+        h2 .highlight {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             text-align: left;
         }
 
         .feature-card {
-            background: var(--white-color);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .feature-card h3 {
-            font-size: 1.5em;
-            color: var(--text-color);
+            font-size: 1.6em;
+            color: var(--white-color);
             margin-top: 0;
+            margin-bottom: 15px;
         }
 
         /* How to Join Section */
         .join-steps {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
+            gap: 50px;
+            margin-top: 60px;
+            flex-wrap: wrap;
         }
 
         .step {
-            max-width: 250px;
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 280px;
+            border: 1px solid var(--border-color);
         }
 
         .step-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
         /* Footer */
         footer {
-            background-color: #333;
-            color: var(--white-color);
+            background-color: #0a0a0a;
+            color: #777;
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
+        }
+        
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
     </style>
@@ -135,7 +215,7 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
-            <h1>未来を創る、Arc Creation AIコミュニティ</h1>
+            <h1>未来を創る、<span class="highlight">Arc Creation AI</span>コミュニティ</h1>
             <p>初心者から実践者まで、共に学び、成長できる場所。</p>
             <!-- Discord招待リンクをここに設定してください -->
             <a href="#" class="cta-button">今すぐDiscordに参加！</a>
@@ -144,10 +224,10 @@
 
     <main>
         <!-- About Section -->
-        <section id="about">
+        <section id="about" class="fade-in">
             <div class="container">
                 <h2>当コミュニティについて</h2>
-                <p style="max-width: 700px; margin: 0 auto;">
+                <p style="max-width: 700px; margin: 0 auto; color: #a0a0a0;">
                     AIの技術は日々進化しています。一人での学習に限界を感じていませんか？<br>
                     このコミュニティは、AIプログラミングを学ぶ仲間と繋がり、最新情報を交換し、
                     共にプロジェクトに挑戦するためのオンラインスペースです。
@@ -156,19 +236,22 @@
         </section>
 
         <!-- Features Section -->
-        <section id="features">
+        <section id="features" class="fade-in">
             <div class="container">
-                <h2>コミュニティでできること</h2>
+                <h2>コミュニティで<span class="highlight">できること</span></h2>
                 <div class="features-grid">
                     <div class="feature-card">
+                        <div class="icon"><i class="fas fa-comments"></i></div>
                         <h3>質問・相談</h3>
                         <p>プログラミングの疑問点やキャリアの悩みを気軽に相談できます。経験豊富なメンバーがあなたをサポートします。</p>
                     </div>
                     <div class="feature-card">
+                        <div class="icon"><i class="fas fa-project-diagram"></i></div>
                         <h3>プロジェクト開発</h3>
                         <p>仲間とチームを組んで、WebアプリやAIモデルなど、実践的な開発に挑戦できます。ポートフォリオを充実させましょう。</p>
                     </div>
                     <div class="feature-card">
+                        <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
                         <h3>勉強会・イベント</h3>
                         <p>最新論文の輪読会や、特定の技術をテーマにした勉強会を定期的に開催。常に新しい知識を吸収できます。</p>
                     </div>
@@ -177,9 +260,9 @@
         </section>
 
         <!-- How to Join Section -->
-        <section id="join">
+        <section id="join" class="fade-in">
             <div class="container">
-                <h2>参加はかんたん3ステップ</h2>
+                <h2>参加は<span class="highlight">かんたん</span>3ステップ</h2>
                 <div class="join-steps">
                     <div class="step">
                         <div class="step-number">1</div>
@@ -194,7 +277,7 @@
                         <p>自己紹介チャンネルで、簡単な挨拶をしましょう！</p>
                     </div>
                 </div>
-                <div style="margin-top: 50px;">
+                <div style="margin-top: 60px;">
                     <!-- Discord招待リンクをここに設定してください -->
                     <a href="#" class="cta-button">Discordに参加して学習を始める</a>
                 </div>
@@ -208,6 +291,27 @@
             <p>&copy; 2025 Arc Creation AIコミュニティ. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeInElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeInElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 
 </body>
 </html>
